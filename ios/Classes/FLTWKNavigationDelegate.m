@@ -43,7 +43,7 @@
     }
 
 
-    if ([reqUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![reqUrl hasSuffix:[NSString stringWithFormat:@"redirect_url=%@://",CompanyFirstDomainByWeChat]]) {
+    if ([reqUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![reqUrl hasSuffix:[NSString stringWithFormat:@"redirect_url=%@://",_attachUrl]]) {
          decisionHandler(WKNavigationActionPolicyCancel);
 
          NSString *redirectUrl = nil;
