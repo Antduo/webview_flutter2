@@ -34,11 +34,11 @@
     static NSString *endPayRedirectURL = nil;
     // H5微信支付完,跳回到APP
     NSString *_attachUrl = @"";
-    if ([_urlStr containsString:@"nidianme.com"]) {
+    if ([reqUrl containsString:@"nidianme.com"]) {
         _attachUrl = @"nidianme.com";
     }
 
-    if ([_urlStr containsString:@"haodf.com"]) {
+    if ([reqUrl containsString:@"haodf.com"]) {
         _attachUrl = @"www.haodf.com";
     }
 
