@@ -35,7 +35,7 @@
     // H5微信支付完,跳回到APP
     NSString *_attachUrl = @"";
     if ([reqUrl containsString:@"nidianme.com"]) {
-        _attachUrl = @"nidianme.com";
+        _attachUrl = @"www.nidianme.com";
     }
 
     if ([reqUrl containsString:@"haodf.com"]) {
