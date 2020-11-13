@@ -59,7 +59,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                         url.startsWith("mailto://") || url.startsWith("tel://")
                 ) {
                   Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                  startActivity(intent);
+//                  startActivity(intent);
                   return true;
                 }
 
