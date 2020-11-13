@@ -7,6 +7,8 @@ package io.flutter.plugins.webviewflutter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.app.Activity;
 import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.os.Handler;
