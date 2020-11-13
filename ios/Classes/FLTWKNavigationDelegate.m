@@ -25,6 +25,33 @@
 - (void)webView:(WKWebView *)webView
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+
+    NSURL *url = navigationAction.request.URL;
+    NSString *reqUrl = url.absoluteString;
+//    NSLog(@"-url---- %@",reqUrl);
+    NSString *scheme = [url scheme];
+    NSString *CompanyFirstDomainByWeChat = @"www.haodf.com";
+
+        // H5微信支付完,跳回到APP
+        if ([reqUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![reqUrl hasSuffix:[NSString stringWithFormat:@"redirect_url=%@://",CompanyFirstDomainByWeChat]]) {
+            decisionHandler(WKNavigationActionPolicyCancel);
+
+            NSString *redirectUrl = nil;
+            if ([reqUrl containsString:@"redirect_url="]) {
+                NSRange redirectRange = [reqUrl rangeOfString:@"redirect_url"];
+                endPayRedirectURL =  [reqUrl substringFromIndex:redirectRange.location+redirectRange.length+1];
+                redirectUrl = [[reqUrl substringToIndex:redirectRange.location] stringByAppendingString:[NSString stringWithFormat:@"redirect_url=%@://",CompanyFirstDomainByWeChat]];
+            }else {
+                redirectUrl = [reqUrl stringByAppendingString:[NSString stringWithFormat:@"&redirect_url=%@://",CompanyFirstDomainByWeChat]];
+            }
+
+            NSMutableURLRequest *newRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:redirectUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+            newRequest.allHTTPHeaderFields = navigationAction.request.allHTTPHeaderFields;
+            newRequest.URL = [NSURL URLWithString:redirectUrl];
+            [webView loadRequest:newRequest];
+            return;
+        }
+
   if (!self.hasDartNavigationDelegate) {
     decisionHandler(WKNavigationActionPolicyAllow);
     return;
