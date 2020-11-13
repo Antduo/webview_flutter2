@@ -32,6 +32,7 @@
     NSString *scheme = [url scheme];
     NSString *CompanyFirstDomainByWeChat = @"www.haodf.com";
 
+    static NSString *endPayRedirectURL = nil;
         // H5微信支付完,跳回到APP
         if ([reqUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![reqUrl hasSuffix:[NSString stringWithFormat:@"redirect_url=%@://",CompanyFirstDomainByWeChat]]) {
             decisionHandler(WKNavigationActionPolicyCancel);
