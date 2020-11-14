@@ -33,14 +33,14 @@
 
     static NSString *endPayRedirectURL = nil;
     // H5微信支付完,跳回到APP
-    NSString *_attachUrl = @"";
-    if ([reqUrl containsString:@"nidianme.com"]) {
-        _attachUrl = @"www.nidianme.com";
-    }
-
-    if ([reqUrl containsString:@"haodf.com"]) {
-        _attachUrl = @"www.haodf.com";
-    }
+    NSString *_attachUrl = @"www.nidianme.com";
+//    if ([reqUrl containsString:@"nidianme.com"]) {
+//        _attachUrl = @"www.nidianme.com";
+//    }
+//
+//    if ([reqUrl containsString:@"haodf.com"]) {
+//        _attachUrl = @"www.haodf.com";
+//    }
 
 
     if ([reqUrl hasPrefix:@"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb"] && ![reqUrl hasSuffix:[NSString stringWithFormat:@"redirect_url=%@://",_attachUrl]]) {
