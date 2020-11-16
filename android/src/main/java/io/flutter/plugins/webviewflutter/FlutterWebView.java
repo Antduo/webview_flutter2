@@ -55,7 +55,6 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                             if (!flutterWebViewClient.shouldOverrideUrlLoading(
                                     FlutterWebView.this.webView, request)) {
 
-
                                 // 微信、支付宝跳转
                                 // 发邮件、打电话（联系医助）跳转
                                 //拦截微信支付宝邮件打电话
@@ -65,9 +64,10 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                                     // view.getContext() 拿到上下文
                                     view.getContext().startActivity(intent);
                                     return true;
-                                }else  {
+                                } else {
                                     webView.loadUrl(url);
                                 }
+
                             }
                             return true;
                         }
@@ -76,7 +76,6 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                         public boolean shouldOverrideUrlLoading(WebView view, String url) {
                             if (!flutterWebViewClient.shouldOverrideUrlLoading(
                                     FlutterWebView.this.webView, url)) {
-
                                 // 微信、支付宝跳转
                                 // 发邮件、打电话（联系医助）跳转
                                 //拦截微信支付宝邮件打电话
@@ -86,11 +85,17 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                                     // view.getContext() 拿到上下文
                                     view.getContext().startActivity(intent);
                                     return true;
-                                }else  {
+                                } else {
                                     webView.loadUrl(url);
                                 }
+
                             }
                             return true;
+                        }
+
+                        @Override
+                        public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error{
+
                         }
                     };
 
