@@ -55,6 +55,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                             if (!flutterWebViewClient.shouldOverrideUrlLoading(
                                     FlutterWebView.this.webView, request)) {
 
+                                webView.loadUrl(url);
                                 // 微信、支付宝跳转
                                 // 发邮件、打电话（联系医助）跳转
                                 //拦截微信支付宝邮件打电话
@@ -63,10 +64,8 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                                     // view.getContext() 拿到上下文
                                     view.getContext().startActivity(intent);
-                                    return false;
+                                    return true;
                                 }
-
-                                webView.loadUrl(url);
                             }
                             return true;
                         }
@@ -76,6 +75,16 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                             if (!flutterWebViewClient.shouldOverrideUrlLoading(
                                     FlutterWebView.this.webView, url)) {
                                 webView.loadUrl(url);
+                                // 微信、支付宝跳转
+                                // 发邮件、打电话（联系医助）跳转
+                                //拦截微信支付宝邮件打电话
+                                if (url.startsWith("weixin://") || url.startsWith("alipays://") ||
+                                        url.startsWith("mailto://") || url.startsWith("tel://")) {
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                                    // view.getContext() 拿到上下文
+                                    view.getContext().startActivity(intent);
+                                    return true;
+                                }
                             }
                             return true;
                         }
