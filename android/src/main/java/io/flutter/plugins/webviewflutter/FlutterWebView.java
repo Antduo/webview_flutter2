@@ -96,22 +96,15 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                     };
 
             final WebView newWebView = new WebView(view.getContext());
-//            newWebView.setWebViewClient(webViewClient);
-            newWebView.setWebViewClient(webViewClient
-            @Override
-            public void onReceivedSslError (WebView view, SslErrorHandler handler, SslError error){
-                super.onReceivedSslError(view, handler, error);
-            }
-        });
+            newWebView.setWebViewClient(webViewClient);
 
-        final WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
+            final WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
             transport.setWebView(newWebView);
             resultMsg.sendToTarget();
 
             return true;
+        }
     }
-
-}
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @SuppressWarnings("unchecked")
