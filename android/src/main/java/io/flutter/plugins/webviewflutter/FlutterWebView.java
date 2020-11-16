@@ -95,14 +95,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
 
                         @Override
                         public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error){
-                            qDebug() << "handleSslErrors: ";
-                            foreach (QSslError e, errors)
-                            {
-                                qDebug() << "ssl error: " << e;
-                            }
-
-                            reply->ignoreSslErrors();
-
+                            handler.proceed();
                         }
                     };
 
