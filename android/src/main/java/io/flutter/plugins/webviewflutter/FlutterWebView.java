@@ -89,31 +89,29 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                                     webView.loadUrl(url);
                                 }
 
+
                             }
                             return true;
-                        }
-
-                        @Override
-                        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-
-                            // 不要使用super，否则有些手机访问不了，因为包含了一条 handler.cancel()
-                            // super.onReceivedSslError(view, handler, error);
-
-                            // 接受所有网站的证书，忽略SSL错误，执行访问网页
-                            handler.proceed();
                         }
                     };
 
             final WebView newWebView = new WebView(view.getContext());
-            newWebView.setWebViewClient(webViewClient);
+//            newWebView.setWebViewClient(webViewClient);
+            newWebView.setWebViewClient(webViewClient
+            @Override
+            public void onReceivedSslError (WebView view, SslErrorHandler handler, SslError error){
+                super.onReceivedSslError(view, handler, error);
+            }
+        });
 
-            final WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
+        final WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
             transport.setWebView(newWebView);
             resultMsg.sendToTarget();
 
             return true;
-        }
     }
+
+}
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @SuppressWarnings("unchecked")
