@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c24aaf4-0b91-4ea7-9f68-60d2e12a322b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/io/flutter/plugins/webviewflutter/FlutterWebView.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/io/flutter/plugins/webviewflutter/FlutterWebView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/FLTWKNavigationDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/FLTWKNavigationDelegate.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

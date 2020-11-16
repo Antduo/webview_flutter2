@@ -61,7 +61,8 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
                                 if (url.startsWith("weixin://") || url.startsWith("alipays://") ||
                                         url.startsWith("mailto://") || url.startsWith("tel://")) {
                                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                                    startActivity(intent);
+                                    // view.getContext() 拿到上下文
+                                    view.getContext().startActivity(intent);
                                     return false;
                                 }
 
